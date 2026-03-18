@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    /* Base Font */
+    --font-sans: "Inter", -apple-system, system-ui, sans-serif;
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-mono: "JetBrains Mono", monospace;
+
+    /* Light Theme Palette */
+    --color-light-bg-primary: #ffffff;
+    --color-light-bg-secondary: #f7f7fa;
+    --color-light-bg-tertiary: #eeeeee;
+    --color-light-border: #e2e2e5;
+    --color-light-text-primary: #121214;
+    --color-light-text-secondary: #636366;
+    --color-light-text-tertiary: #999999;
+    
+    /* Dark Theme Palette (Default) */
+    --color-dark-bg-primary: #0a0a0b;
+    --color-dark-bg-secondary: #121215;
+    --color-dark-bg-tertiary: #19191d;
+    --color-dark-border: #28282d;
+    --color-dark-text-primary: #f5f5f7;
+    --color-dark-text-secondary: #909095;
+    --color-dark-text-tertiary: #606065;
+
+    /* Accents & States */
+    --accent: #d4a843;
+    --accent-hover: #ecd181;
+    --danger: #ff453a;
+    --success: #30d158;
+
+    /* Political Bias Colors */
+    --bias-left: #427ee1;         /* Deeper Blue */
+    --bias-left-center: #8ab4f8;  /* Light Blue */
+    --bias-center: #a78bfa;       /* Purple */
+    --bias-right-center: #f97316; /* Orange */
+    --bias-right: #ef4444;        /* Red */
+    --bias-independent: #8b8b8b;  /* Gray */
+  }
+}
+
+/* Default application to Dark Mode */
+:root {
+  --bg-primary: var(--color-dark-bg-primary);
+  --bg-secondary: var(--color-dark-bg-secondary);
+  --bg-tertiary: var(--color-dark-bg-tertiary);
+  --border: var(--color-dark-border);
+  --text-primary: var(--color-dark-text-primary);
+  --text-secondary: var(--color-dark-text-secondary);
+  --text-tertiary: var(--color-dark-text-tertiary);
+  color-scheme: dark;
+}
+
+/* Light Mode Override */
+:root.light {
+  --bg-primary: var(--color-light-bg-primary);
+  --bg-secondary: var(--color-light-bg-secondary);
+  --bg-tertiary: var(--color-light-bg-tertiary);
+  --border: var(--color-light-border);
+  --text-primary: var(--color-light-text-primary);
+  --text-secondary: var(--color-light-text-secondary);
+  --text-tertiary: var(--color-light-text-tertiary);
+  color-scheme: light;
+}
+
+/* Base resets & typography scale overrrides */
+@layer base {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-sans);
+  }
+
+  /* Utility classes mapped from variables for Tailwind plugin ease */
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+}
+
+/* Custom Scrollbar for sleekness */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary); 
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-tertiary); 
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border); 
+}
+
+/* Hide scrollbar but keep scrollability for horizontal carousels */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

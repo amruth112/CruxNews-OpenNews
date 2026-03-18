@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    
+    <!-- Primary Meta Tags -->
+    <title>OpenNews — See Every Side of the Story</title>
+    <meta name="title" content="OpenNews — See Every Side of the Story">
+    <meta name="description" content="OpenNews clusters news from 40+ sources across the political spectrum so you can see how different outlets cover the same story.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://opennews.cruxnews.io/">
+    <meta property="og:title" content="OpenNews — See Every Side of the Story">
+    <meta property="og:description" content="OpenNews clusters news from 40+ sources across the political spectrum so you can see how different outlets cover the same story.">
+    <meta property="og:image" content="https://opennews.cruxnews.io/og-image.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://opennews.cruxnews.io/">
+    <meta property="twitter:title" content="OpenNews — See Every Side of the Story">
+    <meta property="twitter:description" content="OpenNews clusters news from 40+ sources across the political spectrum so you can see how different outlets cover the same story.">
+    <meta property="twitter:image" content="https://opennews.cruxnews.io/og-image.png">
+
+    <!-- Preload Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Fallback theme script to prevent flash of wrong theme -->
+    <script>
+      try {
+        const theme = localStorage.getItem('opennews-theme');
+        if (theme === 'light') {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        } else if (theme === 'system' && window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('error', function(event) {
+        document.body.innerHTML += '<div style="background:red;color:white;padding:20px;position:fixed;top:0;left:0;z-index:9999;width:100%;"><pre>' + event.message + '\\n' + event.filename + ':' + event.lineno + ':' + event.colno + '\\n' + (event.error && event.error.stack) + '</pre></div>';
+      });
+      window.addEventListener('unhandledrejection', function(event) {
+        document.body.innerHTML += '<div style="background:red;color:white;padding:20px;position:fixed;bottom:0;left:0;z-index:9999;width:100%;"><pre>Unhandled Promise Rejection: ' + event.reason + '</pre></div>';
+      });
+    </script>
+  </body>
+</html>
