@@ -8,6 +8,10 @@ import type { SortBy, Region } from '../../types';
 export function StoryFeed() {
   const { state, dispatch } = useStore();
   const [localSearch, setLocalSearch] = useState('');
+  const isBuildingInitialFeed =
+    state.articles.length > 0 &&
+    state.clusters.length === 0 &&
+    state.unclusteredArticles.length === 0;
 
   // Derived filtered & sorted stories
   const filteredClusters = useMemo(() => {
@@ -42,7 +46,12 @@ export function StoryFeed() {
   }, [state.clusters, localSearch, state.regionFilter, state.sortBy]);
 
   // Handle Loading State
-  if (state.articles.length === 0 || state.modelStatus === 'loading' || state.modelStatus === 'downloading') {
+  if (
+    state.articles.length === 0 ||
+    state.modelStatus === 'loading' ||
+    state.modelStatus === 'downloading' ||
+    isBuildingInitialFeed
+  ) {
     return <LoadingState />;
   }
 

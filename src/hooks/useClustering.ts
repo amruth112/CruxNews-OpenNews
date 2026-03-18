@@ -61,7 +61,12 @@ export function useClustering() {
         ).filter(Boolean); // Safety check
         
         if (currentEmbeddings.length !== state.articles.length) {
-          console.warn('Embedding mismatch, skipping cluster cycle');
+          console.warn('Embedding mismatch, falling back to unclustered view');
+          const sortedUnclustered = [...state.articles].sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime());
+          dispatch({
+            type: 'SET_CLUSTERS',
+            payload: { clusters: [], unclustered: sortedUnclustered }
+          });
           setIsClustering(false);
           return;
         }
