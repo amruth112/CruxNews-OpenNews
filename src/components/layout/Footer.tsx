@@ -8,6 +8,10 @@ export function Footer() {
           
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-2 text-[var(--text-primary)] font-bold">
+              <svg width="24" height="24" viewBox="0 0 64 64" className="shrink-0">
+                <rect width="64" height="64" rx="14" fill="#0a0a0a"/>
+                <path d="M33 20 C38 20,43 24,43 30 C43 37,37 43,30 43 C22 43,16 36,16 28 C16 19,23 12,33 12 C44 12,52 20,52 32 C52 44,43 52,31 52" fill="none" stroke="#f5f0eb" strokeWidth="4.5" strokeLinecap="round"/>
+              </svg>
               OpenNews
             </div>
             <p className="mt-2 text-sm text-[var(--text-secondary)] max-w-sm">

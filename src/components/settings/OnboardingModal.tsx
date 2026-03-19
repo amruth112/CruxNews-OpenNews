@@ -28,13 +28,10 @@ export function OnboardingModal() {
           <div className="p-6 sm:p-8 pb-6 border-b border-[var(--border)] bg-[var(--bg-secondary)] text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--accent)]/10 to-transparent pointer-events-none" />
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--bg-tertiary)] to-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-center shadow-inner mb-4 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center opacity-70">
-                  <div className="w-5 h-5 rounded-full border-2 border-[var(--bias-left)] absolute -translate-x-1.5" />
-                  <div className="w-5 h-5 rounded-full border-2 border-[var(--bias-right)] absolute translate-x-1.5" />
-                  <div className="w-5 h-5 rounded-full border-2 border-[var(--accent)]" />
-                </div>
-              </div>
+              <svg width="48" height="48" viewBox="0 0 64 64" className="mb-4">
+                <rect width="64" height="64" rx="14" fill="#0a0a0a"/>
+                <path d="M33 20 C38 20,43 24,43 30 C43 37,37 43,30 43 C22 43,16 36,16 28 C16 19,23 12,33 12 C44 12,52 20,52 32 C52 44,43 52,31 52" fill="none" stroke="#f5f0eb" strokeWidth="4.5" strokeLinecap="round"/>
+              </svg>
               <h2 className="text-2xl font-bold text-[var(--text-primary)] mb-2">Welcome to OpenNews</h2>
               <p className="text-[var(--text-secondary)] text-sm max-w-sm mx-auto">
                 See every side of the story. OpenNews clusters identical stories from across the political spectrum natively in your browser.

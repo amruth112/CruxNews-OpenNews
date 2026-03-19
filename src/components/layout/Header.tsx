@@ -28,14 +28,10 @@ export function Header() {
           
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              {/* Simple pure CSS logo representing viewing many lenses */}
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--bg-tertiary)] to-[var(--bg-secondary)] border border-[var(--border)] flex items-center justify-center shadow-inner relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center opacity-70">
-                  <div className="w-4 h-4 rounded-full border border-[var(--bias-left)] absolute -translate-x-1" />
-                  <div className="w-4 h-4 rounded-full border border-[var(--bias-right)] absolute translate-x-1" />
-                  <div className="w-4 h-4 rounded-full border border-[var(--accent)]" />
-                </div>
-              </div>
+              <svg width="32" height="32" viewBox="0 0 64 64" className="shrink-0">
+                <rect width="64" height="64" rx="14" fill="#0a0a0a"/>
+                <path d="M33 20 C38 20,43 24,43 30 C43 37,37 43,30 43 C22 43,16 36,16 28 C16 19,23 12,33 12 C44 12,52 20,52 32 C52 44,43 52,31 52" fill="none" stroke="#f5f0eb" strokeWidth="4.5" strokeLinecap="round"/>
+              </svg>
               
               <h1 className="text-lg font-bold text-[var(--text-primary)] tracking-tight">
                 OpenNews
