@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 220" width="840" height="220">
+  <defs>
+    <linearGradient id="spec" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="20%" stop-color="#60a5fa"/>
+      <stop offset="40%" stop-color="#93c5fd"/>
+      <stop offset="50%" stop-color="#6b7280"/>
+      <stop offset="60%" stop-color="#fca5a5"/>
+      <stop offset="80%" stop-color="#f87171"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="sbg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#0d0d12"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="840" height="220" rx="12" fill="url(#sbg)"/>
+
+  <!-- Title -->
+  <text x="420" y="32" text-anchor="middle" fill="#666" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" letter-spacing="3">THE POLITICAL SPECTRUM</text>
+
+  <!-- Main gradient bar -->
+  <rect x="70" y="50" width="700" height="10" rx="5" fill="url(#spec)" opacity="0.85"/>
+
+  <!-- Category labels -->
+  <text x="70" y="82" fill="#60a5fa" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">LEFT</text>
+  <text x="210" y="82" fill="#93c5fd" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">LEFT-CENTER</text>
+  <text x="420" y="82" text-anchor="middle" fill="#9ca3af" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">CENTER</text>
+  <text x="580" y="82" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">RIGHT-CENTER</text>
+  <text x="770" y="82" text-anchor="end" fill="#f87171" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">RIGHT</text>
+
+  <!-- Source names row 1 -->
+  <text x="70" y="102" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Guardian, NPR, Vox</text>
+  <text x="210" y="102" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">BBC, CNN, NYT, WaPo</text>
+  <text x="420" y="102" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Reuters, AP, The Hill</text>
+  <text x="580" y="102" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Fox, WSJ, Telegraph</text>
+  <text x="770" y="102" text-anchor="end" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Breitbart, Daily Wire</text>
+
+  <!-- Source names row 2 -->
+  <text x="70" y="117" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">HuffPost, Salon, Intercept</text>
+  <text x="210" y="117" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">CBS, NBC, ABC, PBS</text>
+  <text x="420" y="117" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Axios, Forbes, Economist</text>
+  <text x="580" y="117" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">NY Post, Daily Mail</text>
+  <text x="770" y="117" text-anchor="end" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Nat'l Review, Federalist</text>
+
+  <!-- Count badges -->
+  <rect x="70" y="135" width="34" height="18" rx="9" fill="#1e2d4a"/>
+  <text x="87" y="148" text-anchor="middle" fill="#60a5fa" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="700">9</text>
+
+  <rect x="210" y="135" width="34" height="18" rx="9" fill="#1e2d4a" opacity="0.7"/>
+  <text x="227" y="148" text-anchor="middle" fill="#93c5fd" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="700">18</text>
+
+  <rect x="403" y="135" width="34" height="18" rx="9" fill="#1f1f1f"/>
+  <text x="420" y="148" text-anchor="middle" fill="#9ca3af" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="700">8</text>
+
+  <rect x="580" y="135" width="34" height="18" rx="9" fill="#3a1e1e" opacity="0.7"/>
+  <text x="597" y="148" text-anchor="middle" fill="#fca5a5" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="700">10</text>
+
+  <rect x="736" y="135" width="34" height="18" rx="9" fill="#3a1e1e"/>
+  <text x="753" y="148" text-anchor="middle" fill="#f87171" font-family="system-ui, -apple-system, sans-serif" font-size="9.5" font-weight="700">6</text>
+
+  <!-- International section -->
+  <line x1="70" y1="172" x2="770" y2="172" stroke="#1a1a1a" stroke-width="0.5"/>
+  <text x="420" y="192" text-anchor="middle" fill="#a78bfa" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" letter-spacing="0.5">+ 65 INTERNATIONAL SOURCES</text>
+  <text x="420" y="210" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9.5">Al Jazeera, DW, France24, NHK, SCMP, Times of India, Sky News, ABC AU, and 57 more across 8 regions</text>
+
+  <!-- Border -->
+  <rect width="840" height="220" rx="12" fill="none" stroke="#1f1f1f" stroke-width="1"/>
+</svg>

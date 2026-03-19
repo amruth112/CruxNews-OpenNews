@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 340" width="840" height="340">
+  <defs>
+    <linearGradient id="abg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#0d0d12"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5f0eb" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#f5f0eb" stop-opacity="0.03"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <rect width="840" height="340" rx="12" fill="url(#abg)"/>
+
+  <!-- Title -->
+  <text x="420" y="30" text-anchor="middle" fill="#666" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="600" letter-spacing="3">HOW IT WORKS</text>
+
+  <!-- Browser zone label -->
+  <rect x="30" y="44" width="780" height="200" rx="8" fill="none" stroke="#1f1f1f" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="50" y="62" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="9" font-weight="600" letter-spacing="2">YOUR BROWSER</text>
+
+  <!-- Step 1: Fetch -->
+  <rect x="55" y="80" width="120" height="70" rx="8" fill="url(#accent-grad)" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="115" y="106" text-anchor="middle" fill="#f5f0eb" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">FETCH</text>
+  <text x="115" y="122" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="8.5">116 RSS feeds</text>
+  <text x="115" y="135" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8">Circuit breaker</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="180" y1="115" x2="215" y2="115" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- Step 2: Parse -->
+  <rect x="220" y="80" width="120" height="70" rx="8" fill="url(#accent-grad)" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="280" y="106" text-anchor="middle" fill="#f5f0eb" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">PARSE</text>
+  <text x="280" y="122" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="8.5">XML to articles</text>
+  <text x="280" y="135" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8">Dedup + filter</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="345" y1="115" x2="380" y2="115" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- Step 3: Embed -->
+  <rect x="385" y="80" width="120" height="70" rx="8" fill="url(#accent-grad)" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="445" y="106" text-anchor="middle" fill="#f5f0eb" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">EMBED</text>
+  <text x="445" y="122" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="8.5">384-dim vectors</text>
+  <text x="445" y="135" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8">Transformers.js</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="510" y1="115" x2="545" y2="115" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- Step 4: Cluster -->
+  <rect x="550" y="80" width="120" height="70" rx="8" fill="url(#accent-grad)" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="610" y="106" text-anchor="middle" fill="#f5f0eb" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">CLUSTER</text>
+  <text x="610" y="122" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="8.5">Cosine similarity</text>
+  <text x="610" y="135" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8">Agglomerative</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="675" y1="115" x2="705" y2="115" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+
+  <!-- Step 5: Render -->
+  <rect x="710" y="80" width="85" height="70" rx="8" fill="url(#accent-grad)" stroke="#2a2a2a" stroke-width="1"/>
+  <text x="752" y="106" text-anchor="middle" fill="#f5f0eb" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700">RENDER</text>
+  <text x="752" y="122" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="8.5">Story clusters</text>
+  <text x="752" y="135" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8">Bias + timeline</text>
+
+  <!-- Browser zone end -->
+
+  <!-- Arrow down from Fetch to proxy -->
+  <line x1="115" y1="155" x2="115" y2="220" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+  <text x="130" y="195" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8" font-style="italic">only network call</text>
+
+  <!-- Proxy box -->
+  <rect x="45" y="225" width="140" height="55" rx="8" fill="#0d0d12" stroke="#1f1f1f" stroke-width="1"/>
+  <text x="115" y="250" text-anchor="middle" fill="#888" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700">CORS PROXY</text>
+  <text x="115" y="268" text-anchor="middle" fill="#444" font-family="system-ui, -apple-system, sans-serif" font-size="8.5">Vercel Edge Function</text>
+
+  <!-- Key insight text -->
+  <rect x="260" y="270" width="520" height="50" rx="8" fill="#111115" stroke="#1f1f1f" stroke-width="0.5"/>
+  <text x="520" y="293" text-anchor="middle" fill="#777" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">Everything smart happens in your browser.</text>
+  <text x="520" y="310" text-anchor="middle" fill="#555" font-family="system-ui, -apple-system, sans-serif" font-size="10">The server is a dumb pipe that forwards RSS XML. No processing. No storage. No logging.</text>
+
+  <!-- Border -->
+  <rect width="840" height="340" rx="12" fill="none" stroke="#1f1f1f" stroke-width="1"/>
+</svg>
