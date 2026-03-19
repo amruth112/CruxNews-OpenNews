@@ -30,7 +30,7 @@ export function Header() {
             <div className="flex items-center gap-2">
               <svg width="32" height="32" viewBox="0 0 64 64" className="shrink-0">
                 <rect width="64" height="64" rx="14" fill="#0a0a0a"/>
-                <path d="M33 20 C38 20,43 24,43 30 C43 37,37 43,30 43 C22 43,16 36,16 28 C16 19,23 12,33 12 C44 12,52 20,52 32 C52 44,43 52,31 52" fill="none" stroke="#f5f0eb" strokeWidth="4.5" strokeLinecap="round"/>
+                <path d="M34 29 C34 31.5,32.5 33.5,30 33.5 C27 33.5,25.5 31,25.5 28.5 C25.5 25.5,28 22.5,31 22.5 C35 22.5,38.5 25,39 29 C39.5 34,36 38.5,31 38.5 C24.5 38.5,20.5 34,20 28.5 C19.5 22,24 16.5,31 16 C39.5 15.5,46 22,46 30 C46 39,40 47,31 47" fill="none" stroke="#f5f0eb" strokeWidth="4" strokeLinecap="round"/>
               </svg>
               
               <h1 className="text-lg font-bold text-[var(--text-primary)] tracking-tight">
