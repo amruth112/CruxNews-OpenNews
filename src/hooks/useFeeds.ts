@@ -6,45 +6,48 @@ import { getEnabledFeeds } from '../config/feeds';
 export function useFeeds() {
   const { state, dispatch } = useStore();
   const fetchTimeoutRef = useRef<number | null>(null);
+  const hasFetchedRef = useRef(false);
 
   const fetchFeeds = useCallback(async (isManualRefresh = false) => {
     if (state.isRefreshing) return;
-    
+
     dispatch({ type: 'SET_REFRESHING', payload: true });
-    
+
     if (isManualRefresh) {
       dispatch({ type: 'SET_ERROR', payload: null });
     }
 
     try {
       const activeFeeds = getEnabledFeeds(state.settings.enabledFeeds);
-      
+
       const { articles, statuses } = await fetchAllFeeds(
-        activeFeeds, 
+        activeFeeds,
         state.settings.maxArticleAge
       );
 
       dispatch({ type: 'SET_ARTICLES', payload: articles });
       dispatch({ type: 'SET_FEED_STATUSES', payload: statuses });
       dispatch({ type: 'SET_LAST_UPDATED', payload: new Date() });
-      
+
     } catch (err: any) {
       console.error('Master feed fetch error:', err);
-      dispatch({ 
-        type: 'SET_ERROR', 
-        payload: 'Failed to complete feed refresh. Some sources may be unavailable.' 
+      dispatch({
+        type: 'SET_ERROR',
+        payload: 'Failed to complete feed refresh. Some sources may be unavailable.'
       });
     } finally {
       dispatch({ type: 'SET_REFRESHING', payload: false });
     }
   }, [state.settings.enabledFeeds, state.settings.maxArticleAge, state.isRefreshing, dispatch]);
 
-  // Initial fetch
+  // Always fetch fresh data on mount.
+  // Session cache provides instant display while this runs in the background.
   useEffect(() => {
-    if (state.lastUpdated === null && !state.isRefreshing && state.articles.length === 0) {
+    if (!hasFetchedRef.current && !state.isRefreshing) {
+      hasFetchedRef.current = true;
       fetchFeeds();
     }
-  }, [state.lastUpdated, state.isRefreshing, state.articles.length, fetchFeeds]);
+  }, [state.isRefreshing, fetchFeeds]);
 
   // Setup polling based on settings
   useEffect(() => {

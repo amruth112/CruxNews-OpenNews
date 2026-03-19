@@ -34,8 +34,8 @@ Every contribution must align with these core principles:
 
 2. **Clone your fork:**
    ```bash
-   git clone https://github.com/<your-username>/opennews.git
-   cd opennews
+   git clone https://github.com/<your-username>/CruxNews-OpenNews.git
+   cd CruxNews-OpenNews
    ```
 
 3. **Install dependencies:**

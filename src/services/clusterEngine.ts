@@ -33,40 +33,52 @@ export async function initModel(onProgress?: ProgressCallback): Promise<any> {
   }
 
   initPromise = new Promise((resolve, reject) => {
+    let settled = false;
+
     const run = async () => {
       try {
         if (onProgress) onProgress(0, 'loading');
 
-        // Add a 30s timeout to model loading to prevent permanent hangs
         const timeout = setTimeout(() => {
-           reject(new Error("Transformers model init timeout"));
+          if (!settled) {
+            settled = true;
+            isInitializing = false;
+            initPromise = null;
+            if (onProgress) onProgress(0, 'error');
+            reject(new Error('Transformers model init timeout'));
+          }
         }, 30000);
 
         const extractor = await pipeline('feature-extraction', MODEL_ID, {
           progress_callback: (info: any) => {
+            if (settled) return;
             if (info.status === 'download' || info.status === 'progress' || info.status === 'init' || info.status === 'downloading') {
               const pct = typeof info.progress === 'number' ? Math.round(info.progress) :
                           (info.loaded && info.total ? Math.round((info.loaded / info.total) * 100) : 10);
               if (onProgress) onProgress(pct, 'downloading');
-            } else if (info.status === 'ready' && onProgress) {
-              onProgress(100, 'ready');
-            } else if (info.status === 'done' && onProgress) {
+            } else if ((info.status === 'ready' || info.status === 'done') && onProgress) {
               onProgress(100, 'ready');
             }
-          }
+          },
         });
 
         clearTimeout(timeout);
-        extractorInstance = extractor;
-        isInitializing = false;
-
-        if (onProgress) onProgress(100, 'ready');
-        resolve(extractor);
+        if (!settled) {
+          settled = true;
+          extractorInstance = extractor;
+          isInitializing = false;
+          if (onProgress) onProgress(100, 'ready');
+          resolve(extractor);
+        }
       } catch (error) {
-        console.error('Failed to initialize Transformers.js:', error);
-        isInitializing = false;
-        if (onProgress) onProgress(0, 'error');
-        reject(error);
+        if (!settled) {
+          settled = true;
+          console.error('Failed to initialize Transformers.js:', error);
+          isInitializing = false;
+          initPromise = null;
+          if (onProgress) onProgress(0, 'error');
+          reject(error);
+        }
       }
     };
     run();
@@ -91,20 +103,22 @@ export async function generateEmbeddings(
     // Extractor returns a Tensor.
     // Ensure we handle pooling and normalization correctly for cosine similarity.
     const output = await extractor(batch, { pooling: 'mean', normalize: true });
-    
-    // The output tensor shape is [batch_size, sequence_length, embedding_dim]
-    // or [batch_size, embedding_dim] depending on the model and options.
-    // For all-MiniLM, pooling: 'mean' gives [batch_size, 384]
-    
-    // We need to slice the flat Float32Array into individual arrays per text
+
+    // output is a Tensor: [batch_size, 384] for all-MiniLM
     const dims = output.dims;
     const batchData = output.data as Float32Array;
     const embeddingDim = dims[dims.length - 1];
-    
+
     for (let j = 0; j < batch.length; j++) {
       const start = j * embeddingDim;
       const end = start + embeddingDim;
+      // .slice() copies the data so we can safely dispose the tensor
       embeddings.push(batchData.slice(start, end));
+    }
+
+    // Free WASM memory held by the Tensor
+    if (typeof output.dispose === 'function') {
+      output.dispose();
     }
     
     if (onProgress) {

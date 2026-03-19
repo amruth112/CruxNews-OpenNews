@@ -88,7 +88,13 @@ export async function fetchAllFeeds(
             let imageUrl: string | undefined;
             const imgMatch = (item['content:encoded'] || item.content || desc).match(/<img[^>]+src="([^">]+)"/);
             if (imgMatch) {
-              imageUrl = imgMatch[1];
+              try {
+                const imgUrl = new URL(imgMatch[1]);
+                // Only allow http/https images — blocks javascript:, data:, etc.
+                if (imgUrl.protocol === 'https:' || imgUrl.protocol === 'http:') {
+                  imageUrl = imgMatch[1];
+                }
+              } catch { /* invalid URL, skip */ }
             }
 
             return {

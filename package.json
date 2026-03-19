@@ -7,11 +7,11 @@
   "author": "CruxNews (https://cruxnews.io)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/cruxnews/opennews.git"
+    "url": "https://github.com/amruth112/CruxNews-OpenNews.git"
   },
-  "homepage": "https://github.com/cruxnews/opennews",
+  "homepage": "https://github.com/amruth112/CruxNews-OpenNews",
   "bugs": {
-    "url": "https://github.com/cruxnews/opennews/issues"
+    "url": "https://github.com/amruth112/CruxNews-OpenNews/issues"
   },
   "keywords": [
     "news",

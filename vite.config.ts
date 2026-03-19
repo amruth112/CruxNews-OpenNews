@@ -60,7 +60,8 @@ const ALLOWED_DOMAINS = [
 function isAllowedUrl(urlStr: string): boolean {
   try {
     const url = new URL(urlStr);
-    return ALLOWED_DOMAINS.some(d => url.hostname.includes(d));
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
+    return ALLOWED_DOMAINS.some(d => url.hostname === d || url.hostname.endsWith('.' + d));
   } catch {
     return false;
   }
@@ -106,7 +107,7 @@ function rssProxyPlugin(): Plugin {
           }
 
           const body = await response.text();
-          res.setHeader('Content-Type', response.headers.get('content-type') || 'application/xml');
+          res.setHeader('Content-Type', 'application/xml; charset=utf-8');
           res.setHeader('Cache-Control', 'max-age=300');
           res.setHeader('Access-Control-Allow-Origin', '*');
           res.end(body);

@@ -136,11 +136,14 @@ async function generateWithOpenAI(prompt: string, apiKey: string): Promise<strin
 }
 
 async function generateWithGemini(prompt: string, apiKey: string): Promise<string> {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODELS.gemini}:generateContent?key=${apiKey}`;
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${MODELS.gemini}:generateContent`;
 
   const res = await fetch(url, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: {
+      'Content-Type': 'application/json',
+      'x-goog-api-key': apiKey,
+    },
     body: JSON.stringify({
       contents: [
         {
@@ -289,7 +292,8 @@ export async function testApiKey(
 
     if (provider === 'gemini') {
       const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`
+        'https://generativelanguage.googleapis.com/v1beta/models',
+        { headers: { 'x-goog-api-key': apiKey } }
       );
       return res.ok
         ? { ok: true, message: 'Connected to Gemini ✓' }

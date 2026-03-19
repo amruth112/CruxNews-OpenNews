@@ -60,7 +60,9 @@ const ALLOWED_DOMAINS = [
 function isAllowedUrl(urlStr: string): boolean {
   try {
     const url = new URL(urlStr);
-    return ALLOWED_DOMAINS.some(d => url.hostname.includes(d));
+    if (url.protocol !== 'https:' && url.protocol !== 'http:') return false;
+    // Exact match or subdomain match (prevents theguardian.com.evil.com bypass)
+    return ALLOWED_DOMAINS.some(d => url.hostname === d || url.hostname.endsWith('.' + d));
   } catch {
     return false;
   }
@@ -120,13 +122,13 @@ export default async function handler(request: Request) {
     return new Response(body, {
       status: 200,
       headers: {
-        'Content-Type': upstreamResponse.headers.get('content-type') || 'application/xml',
+        'Content-Type': 'application/xml; charset=utf-8',
         'Cache-Control': 's-maxage=300, stale-while-revalidate',
         'Access-Control-Allow-Origin': '*',
       },
     });
   } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : 'Fetch failed';
+    const message = err instanceof Error && err.name === 'AbortError' ? 'Request timeout' : 'Fetch failed';
     return new Response(JSON.stringify({ error: message }), {
       status: 502,
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },

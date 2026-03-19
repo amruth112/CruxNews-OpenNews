@@ -17,7 +17,7 @@ export function Footer() {
 
           <div className="flex flex-col items-center md:items-end gap-3">
             <a 
-              href="https://github.com/cruxnews/opennews" 
+              href="https://github.com/amruth112/CruxNews-OpenNews" 
               target="_blank" 
               rel="noreferrer"
               className="flex items-center gap-2 text-sm font-medium text-[var(--text-primary)] px-4 py-2 bg-[var(--bg-primary)] border border-[var(--border)] hover:border-[var(--text-secondary)] rounded-lg transition-colors"

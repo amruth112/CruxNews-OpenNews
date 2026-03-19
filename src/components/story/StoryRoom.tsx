@@ -70,7 +70,8 @@ export function StoryRoom({ cluster }: StoryRoomProps) {
     getSummary();
     
     return () => { isMounted = false; };
-  }, [cluster.id, aiProvider, settings.aiApiKeys, ollamaAvailable]); // Re-run if provider/keys change
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cluster.id, aiProvider, settings.aiApiKeys.groq, settings.aiApiKeys.openai, settings.aiApiKeys.gemini, ollamaAvailable]);
 
   const goBack = () => {
     dispatch({ type: 'SELECT_CLUSTER', payload: null });
